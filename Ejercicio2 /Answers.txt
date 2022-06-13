@@ -1,0 +1,49 @@
+A. De cada fuente de datos se tienen identificados qué campos requiere el área operativa. 
+        ¿Para cumplir con los dos objetivos, qué subconjunto de cada fuente de datos extraerías?
+        Extraeria todos los datos de todas las tablas para poder formar un datalake de esta forma 
+        la aplicacion que hara las consultas tendra la facilidad de poder buscar en un conjunto de datos
+        lo cual haria mucho mas eficientes las consultas, algoritmos o busquedas de grafos. 
+
+
+B. ¿Qué posibles retos implica la extracción de cada una de las fuentes de datos por separado y qué herramientas utilizarías?
+
+    El principal reto es la indisponibilidad del servicio. para ello podriamos hacer un proceso que no indisponibilice 
+    la base de datos mientras se hace la descarga, la principal podria ser una replica exacta en el momento en el que 
+    comience la descarga de procesos batch, (levantar un clon de la base de datos en ese momento y volverlo master)
+
+    El siguiente reto es el procesamiento de datos que puede llegar a fallar, para ello se puede realizar un proceso batch
+    que identifique cuando falle el proceso y se relance desde el punto de quiebre. 
+
+    Otro reto importante es mediante el procesamiento la duplicidad o nulidad de los daatos. para ello lo resolvemos con la base
+    de datos duplicada y de esa forma garantizamos la integridad de los datos. 
+
+
+C. ¿Aparte de un proceso batch en la hora de menor uso, cómo podrías mitigar el impacto de tu pipeline sobre las fuentes originales?
+
+    El principal reto es la indisponibilidad del servicio. para ello podriamos hacer un proceso que no indisponibilice 
+    la base de datos mientras se hace la descarga, la principal podria ser una replica exacta en el momento en el que 
+    comience la descarga de procesos batch, (levantar un clon de la base de datos en ese momento y volverlo master)
+
+D. ¿Cuáles etapas considerarías en tu proceso de transformación de datos y qué uso les darías?
+
+    las tres de un proceso de datos Extraccion Transformacion y Carga 
+    Principalmente en el proceso de transformación se haria una estandarización en los datos para que puedan tener consistencia en 
+    el data lake de esta forma la aplicación que venga a consultar la data sera mucho mas facil de trazar la busqueda de datos.
+
+
+E. ¿Qué herramientas utilizarías para las etapas de transformación?
+
+    Particulamente usaria GLUE por la facilidad que provee la creación de modelos de datos para su explptación.
+
+F. ¿Qué storage usarías para cada propósito y por qué?
+    
+    Usaria una base de datos de GLUE conectada a un proceso ETL para su ejecución. 
+
+G. Recuerda que al menos a diario tendrás que llevar data nueva a tu etapa de transformación final, 
+    ¿Cómo orquestarías tu pipeline y con qué herramienta? 
+    utilizaria un AWS Batch de esta forma las condiciones de ejecución estarian siempre bien parametrizadas 
+    y sin contratiempos. 
+
+H. Proporciona un diagrama de tu propuesta de arquitectura.
+
+    El diagrama viene adjunto en esta misma carpeta. 
